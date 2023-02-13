@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app1
+spec:
+  selector:
+    matchLabels:
+      app: demo-app1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: demo-app1
+    spec:
+      containers:
+        - name: spring-hello-world
+          image: fuzzy28/spring-hello-world:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
